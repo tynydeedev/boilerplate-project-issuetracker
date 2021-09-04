@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Issue Tracker</title>
-    <link rel="icon" type="image/png" href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/public/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        Issue Tracker
-      </h1>
-    </header>
-    <section style="margin: 0 50px;">
-      <h3>Example <code>GET</code> usage</h3>
+
+<head>
+	<title>Issue Tracker</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/public/style.css">
+</head>
+
+<body>
+	<header>
+		<h1>
+			Issue Tracker
+		</h1>
+	</header>
+	<section style="margin: 0 50px;">
+		<h3>Example <code>GET</code> usage</h3>
       <code>/api/issues/{project}</code><br>
       <code>/api/issues/{project}?open=true&amp;assigned_to=Joe</code><br>
       <h3>Example return</h3>
       <pre>
-<code>[
-  { 
-    "_id": "5871dda29faedc3491ff93bb",
-    "issue_title": "Fix error in posting data",
-    "issue_text": "When we post data it has an error.",
-    "created_on": "2017-01-08T06:35:14.240Z",
-    "updated_on": "2017-01-08T06:35:14.240Z",
-    "created_by": "Joe",
-    "assigned_to": "Joe",
-    "open": true,
-    "status_text": "In QA"
-  },
-  ...
- ]
-</code>
-</pre>
+        <code>[
+          { 
+            "_id": "5871dda29faedc3491ff93bb",
+            "issue_title": "Fix error in posting data",
+            "issue_text": "When we post data it has an error.",
+            "created_on": "2017-01-08T06:35:14.240Z",
+            "updated_on": "2017-01-08T06:35:14.240Z",
+            "created_by": "Joe",
+            "assigned_to": "Joe",
+            "open": true,
+            "status_text": "In QA"
+          },
+          ...
+        ]
+        </code>
+      </pre>
     </section>
     <hr style='margin: 0 50px'>
     <section id='testui' style='margin-left: 50px;'>
