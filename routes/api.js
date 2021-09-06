@@ -53,8 +53,6 @@ module.exports = function (app) {
     })
     
     .put(function (req, res){
-      console.log(req.body);
-
       const project = req.params.project;
       const id = req.body._id;
       let title = (!req.body.issue_title) ? null : req.body.issue_title;
