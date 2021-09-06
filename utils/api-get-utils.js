@@ -1,4 +1,8 @@
+const mongo = require('mongodb');
+const { ObjectId } = mongo;
+
 const list = [
+  '_id',
   'issue_title',
   'issue_text',
   'created_by',
@@ -9,10 +13,15 @@ const list = [
   'status_text'
 ];
 
-const returnData = (query, acceptQuery, data) => {
+const returnData = (query, data) => {
+  const acceptQuery = Object.keys(query).filter(e => list.indexOf(e) !== -1);
+
   if (acceptQuery.length === 0) return data.issues;
   return data.issues.filter(issue => {
-    return acceptQuery.every(q => issue[q] === query[q]);
+    return acceptQuery.every(q => {
+      if (q === '_id') return issue[q].toString() === query[q];
+      return issue[q] === query[q];
+    });
   });
 };
 

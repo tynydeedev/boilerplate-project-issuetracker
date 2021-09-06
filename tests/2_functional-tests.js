@@ -242,12 +242,12 @@ suite('Functional Tests', function() {
         .delete('/api/issues/test')
         .type('form')
         .send({
-          '_id': '61359699159ae8600277f3e6'
+          '_id': '613596ed5e1f6591355ad0ed'
         })
         .end(function(err, res) {
           assert.equal(res.status, 200);
           assert.equal(res.body.result, 'successfully deleted');
-          assert.equal(res.body._id, '61359699159ae8600277f3e6');
+          assert.equal(res.body._id, '613596ed5e1f6591355ad0ed');
           done();
         });
     });

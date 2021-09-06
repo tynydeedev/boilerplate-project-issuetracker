@@ -17,8 +17,6 @@ module.exports = function (app) {
       if (query.open === 'true') {query.open = true};
       if (query.open === 'false') {query.open = false};
 
-      const acceptQuery = Object.keys(req.query).filter(e => list.indexOf(e) !== -1);
-
       findProject(project, (err, data) => {
         if (err) return next(err);
         if (!data) {
@@ -26,11 +24,11 @@ module.exports = function (app) {
             if (err) return next(err);
             findProject(project, (err, data) => {
               if (err) return next(err);
-              return res.json(returnData(query, acceptQuery, data));
+              return res.json(returnData(query, data));
             });
           })
         } else {
-          return res.json(returnData(query, acceptQuery, data));
+          return res.json(returnData(query, data));
         };
       });
     })
@@ -55,6 +53,8 @@ module.exports = function (app) {
     })
     
     .put(function (req, res){
+      console.log(req.body);
+
       const project = req.params.project;
       const id = req.body._id;
       let title = (!req.body.issue_title) ? null : req.body.issue_title;
@@ -72,7 +72,7 @@ module.exports = function (app) {
       
       updateIssue(project, id, title, text, author, assignee, status, open, (err, data) => {
         if (err) return res.json({ error: 'could not update', _id: id });
-        res.json({ result: 'successfully updated', _id: id });
+        res.json({ result: 'successfully updated', '_id': id });
       });
     })
     
