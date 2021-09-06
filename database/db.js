@@ -86,4 +86,53 @@ const createIssue = (projectName, title, text, author, assignee, status, done) =
   })
 };
 
-module.exports = { Project, findProject, createProject, createIssue };
+const updateIssue = (project, id, title, text, author, assignee, status, open, done) => {
+  let openValue = open;
+  if (open === 'true') {open = true};
+  if (open === 'false') {open = false};
+
+  const update = {
+    issue_title: title,
+    issue_text: text,
+    created_by: author,
+    assigned_to: assignee,
+    status_text: status,
+    open: openValue,
+    updated_on: Date.now()
+  };
+
+  // remove the null values
+  for (let key in update) {
+    if (update[key] === null) {
+      delete update[key];
+    }
+  };
+
+  Project.findOne({name: project}, (err, data) => {
+    if (err) return done(err);
+    if (!data) return done('invalid project');
+    const issue = data.issues.id(id);
+    if (!issue) return done('invalid _id');
+    issue.set(update);
+    data.save((err, data) => {
+      if (err) return done(err);
+      done(null, data);
+    })
+  })
+};
+
+const deleteIssue = (project, id, done) => {
+  Project.findOne({name: project}, (err, data) => {
+    if (err) return done(err);
+    if (!data) return done('invalid project');
+    const issue = data.issues.id(id);
+    if (!issue) return done('invalid _id');
+    issue.remove();
+    data.save((err, data) => {
+      if (err) return done(err);
+      done(null, data);
+    })
+  })
+}
+
+module.exports = { Project, findProject, createProject, createIssue, updateIssue, deleteIssue };
