@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
   margin: 0px;
   padding: 0px;
 }
 
+header {
+  margin-bottom: 1.5rem;
+}
+
 body {
-  padding: 10px;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+}
+
+code, .example {
+  background-color: #f5f2f0;
+}
+
+.example {
+  margin: 1rem auto;
+  text-align: left;
+  display: inline-block;
 }
 
 .issue {
@@ -20,4 +37,19 @@ body {
 
 .id {
   font-size: 10.5px;
+}
+
+input, button, textarea {
+  font-family: 'Jost', sans-serif;
+  padding: 5px 5px;
+}
+
+textarea, input[type=text] {
+  width: 400px;
+  box-sizing: border-box;
+  margin: 5px auto;
+}
+
+input[type=text] {
+  height: 1.5rem;
 }

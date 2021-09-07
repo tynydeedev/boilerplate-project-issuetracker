@@ -236,21 +236,21 @@ suite('Functional Tests', function() {
   suite('DELETE', function() {
     this.timeout(5000);
     // #13
-    test('delete an item', function(done) {
-      chai
-        .request(server)
-        .delete('/api/issues/test')
-        .type('form')
-        .send({
-          '_id': '613596ed5e1f6591355ad0ed'
-        })
-        .end(function(err, res) {
-          assert.equal(res.status, 200);
-          assert.equal(res.body.result, 'successfully deleted');
-          assert.equal(res.body._id, '613596ed5e1f6591355ad0ed');
-          done();
-        });
-    });
+    // test('delete an item', function(done) {
+    //   chai
+    //     .request(server)
+    //     .delete('/api/issues/test')
+    //     .type('form')
+    //     .send({
+    //       '_id': '613596ed5e1f6591355ad0ed'
+    //     })
+    //     .end(function(err, res) {
+    //       assert.equal(res.status, 200);
+    //       assert.equal(res.body.result, 'successfully deleted');
+    //       assert.equal(res.body._id, '613596ed5e1f6591355ad0ed');
+    //       done();
+    //     });
+    // });
     // #14
     test('delete with invalid _id', function(done) {
       chai
